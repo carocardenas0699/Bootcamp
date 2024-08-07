@@ -9,7 +9,7 @@ SELECT * FROM cohortes;
 -- Punto 3: Se ha decidido retrasar el comienzo de la cohorte N°1243, por lo que la nueva fecha de inicio será el 16/05. 
 --          Se le solicita modificar la fecha de inicio de esos alumnos.
 UPDATE cohortes
-SET fechaInicio =  '2022-05-16'
+SET fechaInicio ='2022-05-16'
 WHERE idCohorte = 1243;
 
 -- Punto 4: El alumno N° 165 solicito el cambio de su Apellido por “Ramirez”.
@@ -32,8 +32,10 @@ FROM instructores
 WHERE idInstructores <= 5;
 
 -- Punto 6 Op 2
-SELECT DISTINCT instructores.IdInstructores, instructores.nombre, instructores.apellido, cohortes.carrera FROM cohortes
-INNER JOIN instructores ON instructores.IdInstructores = cohortes.instructor
+SELECT DISTINCT instructores.nombre, instructores.apellido, carreras.nombre
+FROM cohortes
+JOIN instructores ON instructores.IdInstructores = cohortes.instructor
+JOIN carreras ON carreras.idCarrera = cohortes.carrera
 WHERE cohortes.carrera = 1;
 
 -- Punto 7: Se desea saber que alumnos formaron parte de la cohorte N° 1235. Elabore un listado.
@@ -54,9 +56,17 @@ ON carrera = idCarrera;
 
 /*Coneste la siguientes interrogantes: 
 a. ¿Que campos permiten que se puedan acceder al nombre de la carrera? 
+	llave de union idCarrera, columna con el nombre nombre
 b. ¿Que tipo de relación existe entre el nombre la tabla cohortes y alumnos? 
+	1 - N: 1 cohorte - muchos alumnos
 c. ¿Proponga dos opciones para filtrar el listado solo por los alumnos que pertenecen a 'Full Stack Developer', 
 utilizando LIKE y NOT LIKE?, ¿Cual de las dos opciones es la manera correcta de hacerlo?, ¿Por que? 
+	WHERE ca.nombre LIKE '%Full Stack Developer%'; #Correcto
+    WHERE ca.nombre NOT LIKE '%Data%'; "No es eficiente si hay muchas opciones
 d. ¿Proponga dos opciones para filtrar el listado solo por los alumnos que pertenecen a 'Full Stack Developer',
  utilizando " = " y " != "? ¿Cual de las dos opciones es la manera correcta de hacerlo?, ¿Por que? 
+	WHERE ca.nombre = 'Full Stack Developer'; #Correcta
+    WHERE ca.nombre != 'Data Science'; #Es igual que usar <>
 e. ¿Como emplearía el filtrado utilizando el campo idCarrera?
+	WHERE carrera.idCarrera = 1;
+    WHERE c.idCarrera != 1;*/
