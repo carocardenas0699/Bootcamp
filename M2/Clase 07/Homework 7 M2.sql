@@ -57,6 +57,8 @@ HAVING CantidadAlumnos > 20;
 
 /* Punto 11: Investigue las funciones TIMESTAMPDIFF() y CURDATE(). ¿Podría utilizarlas para saber cual es la edad de los instructores?.
 			¿Como podrías verificar si la función cálcula años completos? Utiliza DATE_ADD(). */
+SELECT CONCAT(nombre, " ", apellido) as NombreCompleto, TIMESTAMPDIFF(YEAR,fechaNacimiento,CURDATE()) as Edad
+FROM instructores;
 
 /* Punto 12: Cálcula:
 				- La edad de cada alumno.
