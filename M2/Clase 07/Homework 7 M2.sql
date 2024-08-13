@@ -74,6 +74,12 @@ SELECT cohorte, AVG(TIMESTAMPDIFF(YEAR,fechaNacimiento,CURDATE())) as PromedioEd
 FROM alumnos
 GROUP BY cohorte;
 
+SELECT concat(nombre, ' ', apellido) AS NombreCompleto, timestampdiff(YEAR, fechaNacimiento, curdate()) AS Edad,
+date_add(fechaNacimiento,interval timestampdiff(Year,fechaNacimiento, curdate()) year) as verificacion,
+fechaNacimiento
+FROM alumnos
+ORDER BY 1;
+
 -- Punto 13: Elabora un listado de los alumnos que superan la edad promedio de Henry. 
 SELECT CONCAT(nombre, " ", apellido) AS NombreCompleto, TIMESTAMPDIFF(YEAR, fechaNacimiento, CURDATE()) AS Edad
 FROM alumnos
