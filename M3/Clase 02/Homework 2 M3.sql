@@ -52,7 +52,8 @@ GROUP BY c.ProductCategoryID;
 SELECT cr.Name AS Pais, SUM(sd.OrderQty) AS ProductosVendidos, SUM(sd.LineTotal) AS TotalVentas
 FROM salesorderheader sh
 JOIN salesorderdetail sd ON sh.SalesOrderID = sd.SalesOrderID
-JOIN stateprovince sp ON sh.TerritoryID = sp.TerritoryID
+JOIN address a ON sh.ShipToAddressID = a.AddressID
+JOIN stateprovince sp ON a.StateProvinceID = sp.StateProvinceID
 JOIN countryregion cr ON sp.CountryRegionCode = cr.CountryRegionCode
 GROUP BY Pais
 HAVING ProductosVendidos > 15000;
