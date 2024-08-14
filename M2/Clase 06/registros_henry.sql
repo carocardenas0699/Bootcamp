@@ -2,12 +2,12 @@ USE henry;
 
 #Se insertan valores en la tabla carreras.
 
-INSERT INTO carreras (nombre)
+INSERT INTO carrera (nombre)
 VALUES ('Full Stack Developer'),
 ('Data Science');
 
 
-SELECT * FROM carreras;
+SELECT * FROM carrera;
 
 # Se insertan valores en la tabla instructores.
 
@@ -15,10 +15,10 @@ SELECT * FROM carreras;
 
 # Hay que tener en cuenta que algunas cedulas en ciertos paises contienen valores alfanuméricos o simplemente numéricos. En este caso tomaremos la suposición de que estamos trabajando con una DB con valores alfanuméricos en la cédula.
 
-INSERT instructores (cedulaIdentidad, nombre, apellido, fechaNacimiento, fechaIncorporacion) 
+INSERT instructor (cedulaIdentidad, nombre, apellido, fechaNacimiento, fechaIncorporacion) 
 VALUES (25456879,'Antonio','Barrios','1981-7-9','2019-11-8');
 
-INSERT instructores (cedulaIdentidad, nombre, apellido, fechaNacimiento, fechaIncorporacion) 
+INSERT instructor (cedulaIdentidad, nombre, apellido, fechaNacimiento, fechaIncorporacion) 
 VALUES (28456321,'Lucia','Fernandez','1992-5-25','2019-11-8'),
 (27198354,'Leo','Paris','1985-6-20','2021-8-15'),
 (36987520,'Agustín','Casagne','1988-8-17','2021-8-15'),
@@ -27,11 +27,11 @@ VALUES (28456321,'Lucia','Fernandez','1992-5-25','2019-11-8'),
 (28856789,'Agustina','Medina','1991-3-8','2021-12-1'),
 (33128987,'Jorge','Perez','1988-2-19','2021-12-1');
 
-SELECT * FROM instructores;
-SELECT * FROM cohortes;
+SELECT * FROM instructor;
+SELECT * FROM cohorte;
 
 #Se insertan valores en la tabla cohortes.
-INSERT INTO cohortes 
+INSERT INTO cohorte 
 VALUES (1235,'FT-1235',1,'2020-2-1','2020-6-30',1),
 (1236,'FT-1236',1,'2020-4-5','2020-8-31',2),
 (1237,'FT-1237',1,'2021-7-5','2021-11-30',1),
@@ -47,12 +47,12 @@ VALUES (1235,'FT-1235',1,'2020-2-1','2020-6-30',1),
 
 -- INSERT INTO cohortes (codigo, idCarrera, idInstructor, fechaInicio, fechaFinalizacion)
 -- VALUES ('FT-1235',1,1,'2020-2-1','2020-6-30');
-SELECT * FROM alumnos;
+SELECT * FROM alumno;
 #Se insertan valores en la tabla alumnos.
-INSERT INTO alumnos (idAlumnos,cedulaIdentidad,nombre,apellido,fechaNacimiento,fechaIngreso,cohorte)
+INSERT INTO alumno (idAlumno,cedulaIdentidad,nombre,apellido,fechaNacimiento,fechaIngreso,idCohorte)
 VALUES (1,'274352477','Candice','Rojas','2000-12-10','2020-01-21',1235);
   
-INSERT INTO alumnos (idAlumnos,cedulaIdentidad,nombre,apellido,fechaNacimiento,fechaIngreso,cohorte)
+INSERT INTO alumno (idAlumno,cedulaIdentidad,nombre,apellido,fechaNacimiento,fechaIngreso,idCohorte)
 VALUES (2,'313262855','Beverly','Gardner','2006-10-03','2019-12-04',1235),
   (3,'335199030','Carlos','Frank','2006-07-11','2019-12-13',1235),
   (4,'171722128','Callum','Velazquez','2005-11-18','2019-12-17',1235),
@@ -62,7 +62,7 @@ VALUES (2,'313262855','Beverly','Gardner','2006-10-03','2019-12-04',1235),
   (8,'401797157','Julian','Copeland','2001-01-09','2019-12-05',1235),
   (9,'4257391','Cecilia','Roth','2004-12-01','2019-12-17',1235);
 
-INSERT INTO alumnos (idAlumnos,cedulaIdentidad,nombre,apellido,fechaNacimiento,fechaIngreso,cohorte)
+INSERT INTO alumno (idAlumno,cedulaIdentidad,nombre,apellido,fechaNacimiento,fechaIngreso,idCohorte)
 VALUES (10,'19507661','Hillary','Holman','2001-04-07','2019-12-14',1235),
   (11,'106717451','Odysseus','Solomon','2009-07-01','2019-12-14',1235),
   (12,'289307281','Jemima','Carlson','2009-08-26','2019-12-09',1235),
@@ -75,9 +75,9 @@ VALUES (10,'19507661','Hillary','Holman','2001-04-07','2019-12-14',1235),
   (19,'435719201','Lillith','Conley', null ,'2019-12-11',1235),
   (20,'15903996','Marsden','Sparks','2004-04-16','2019-12-25',1235);
   
-SELECT * FROM alumnos;
+SELECT * FROM alumno;
 
-INSERT INTO alumnos (idAlumnos,cedulaIdentidad,nombre,apellido,fechaNacimiento,fechaIngreso,cohorte)
+INSERT INTO alumno (idAlumno,cedulaIdentidad,nombre,apellido,fechaNacimiento,fechaIngreso,idCohorte)
 VALUES (21,'193744389','Belle','Cervantes','2001-02-03','2020-03-17',1236),
   (22,'43397060','Allegra','Dillon','2008-12-31','2020-02-12',1236),
   (23,'441149581','Reed','Goodwin','2002-02-21','2020-03-28',1236),
@@ -102,9 +102,9 @@ VALUES (21,'193744389','Belle','Cervantes','2001-02-03','2020-03-17',1236),
 #No es necesario buscar errores en las sentencias que siguen.
 
 
-SELECT * FROM alumnos;
+SELECT * FROM alumno;
 
-INSERT INTO alumnos (idAlumnos,cedulaIdentidad,nombre,apellido,fechaNacimiento,fechaIngreso,cohorte)
+INSERT INTO alumno (idAlumno,cedulaIdentidad,nombre,apellido,fechaNacimiento,fechaIngreso,idCohorte)
 VALUES (41,'492795224','Amir','Marks','1988-09-12','2021-01-04',1237),
   (42,'309139739','Virginia','Ingram','1988-01-20','2021-04-20',1237),
   (43,'162409522','Jelani','Schroeder','1995-03-11','2021-02-14',1237),
@@ -126,7 +126,7 @@ VALUES (41,'492795224','Amir','Marks','1988-09-12','2021-01-04',1237),
   (59,'26753295','Castor','Shepherd','1996-04-07','2021-02-13',1237),
   (60,'139799658','Miriam','Blake','2005-05-07','2021-03-09',1237);
 
-INSERT INTO alumnos (idAlumnos,cedulaIdentidad,nombre,apellido,fechaNacimiento,fechaIngreso,cohorte)
+INSERT INTO alumno (idAlumno,cedulaIdentidad,nombre,apellido,fechaNacimiento,fechaIngreso,idCohorte)
 VALUES (61,'16549215','Lewis','Burris','1992-04-23','2021-07-16',1238),
   (62,'135566489','Olivia','Booker','2001-07-01','2021-07-14',1238),
   (63,'79692581','Regan','Boyd','2003-08-08','2021-08-17',1238),
@@ -148,7 +148,7 @@ VALUES (61,'16549215','Lewis','Burris','1992-04-23','2021-07-16',1238),
   (79,'181028726','Audrey','Perkins','2001-01-10','2021-08-28',1238),
   (80,'164311007','Sawyer','Holmes','2005-11-23','2021-07-08',1238);
 
-INSERT INTO alumnos (idAlumnos,cedulaIdentidad,nombre,apellido,fechaNacimiento,fechaIngreso,cohorte)
+INSERT INTO alumno (idAlumno,cedulaIdentidad,nombre,apellido,fechaNacimiento,fechaIngreso,idCohorte)
 VALUES (81,'243901227','Jillian','Santos','2000-01-16','2021-10-03',1239),
   (82,'306333267','Jerry','Mccullough','2008-07-29','2021-11-06',1239),
   (83,'179442116','Nerea','Douglas','2005-11-18','2021-11-23',1239),
@@ -170,7 +170,7 @@ VALUES (81,'243901227','Jillian','Santos','2000-01-16','2021-10-03',1239),
   (99,'75106459','Denise','O''brien','2003-07-28','2021-11-25',1239),
   (100,'109594741','Macaulay','Miller','2005-07-05','2021-11-17',1239);
 
-INSERT INTO alumnos (idAlumnos,cedulaIdentidad,nombre,apellido,fechaNacimiento,fechaIngreso,cohorte)
+INSERT INTO alumno (idAlumno,cedulaIdentidad,nombre,apellido,fechaNacimiento,fechaIngreso,idCohorte)
 VALUES (101,'465763558','Gloria','Mcclure','1991-07-02','2022-01-29',1240),
   (102,'209243474','Palmer','Dennis','2002-07-18','2022-01-13',1240),
   (103,'38202200','Kasper','Ford','1984-08-28','2021-12-23',1240),
@@ -192,7 +192,7 @@ VALUES (101,'465763558','Gloria','Mcclure','1991-07-02','2022-01-29',1240),
   (119,'486036354','Madeson','Reeves','2002-11-09','2022-01-30',1240),
   (120,'137896125','Virginia','Conrad','2006-12-26','2021-12-08',1240);
 
-INSERT INTO alumnos (idAlumnos,cedulaIdentidad,nombre,apellido,fechaNacimiento,fechaIngreso,cohorte)
+INSERT INTO alumno (idAlumno,cedulaIdentidad,nombre,apellido,fechaNacimiento,fechaIngreso,idCohorte)
 VALUES (121,'26157392K','Deanna','Wolf','1984-06-06','2022-01-25',1241),
   (122,'57652322','Edan','Ferguson','2002-05-29','2022-02-19',1241),
   (123,'3383903','Levi','Fisher','2002-05-09','2021-12-24',1241),
@@ -214,7 +214,7 @@ VALUES (121,'26157392K','Deanna','Wolf','1984-06-06','2022-01-25',1241),
   (139,'46150244','Darius','Schmidt','2009-12-19','2022-01-16',1241),
   (140,'24139204','Trevor','Giles','2001-06-21','2021-12-24',1241);
 
-INSERT INTO alumnos (idAlumnos,cedulaIdentidad,nombre,apellido,fechaNacimiento,fechaIngreso,cohorte)
+INSERT INTO alumno (idAlumno,cedulaIdentidad,nombre,apellido,fechaNacimiento,fechaIngreso,idCohorte)
 VALUES (141,'468707764','Hedda','Wells','1980-11-30','2022-01-18',1242),
   (142,'357253268','Odessa','Black','1985-04-22','2022-02-02',1242),
   (143,'171379849','Anjolie','Massey','2007-10-24','2022-01-18',1242),
@@ -236,9 +236,9 @@ VALUES (141,'468707764','Hedda','Wells','1980-11-30','2022-01-18',1242),
   (159,'34304696','Paki','Mccarthy','2000-03-17','2022-01-15',1242),
   (160,'497603528','Rylee','Howard','2005-12-03','2022-01-21',1242);
   
-  SELECT * FROM alumnos;
+  SELECT * FROM alumno;
 
-INSERT INTO alumnos (idAlumnos,cedulaIdentidad,nombre,apellido,fechaNacimiento,fechaIngreso,cohorte)
+INSERT INTO alumno (idAlumno,cedulaIdentidad,nombre,apellido,fechaNacimiento,fechaIngreso,idCohorte)
 VALUES (161,'41944781','Stephanie','Hurst','1986-11-23','2022-02-14',1243),
   (162,'31806976','Nathaniel','Duran','2005-12-02','2022-01-03',1243),
   (163,'9364994K','Shelley','Yang','1984-01-14','2022-01-18',1243),

@@ -1,34 +1,34 @@
 CREATE DATABASE henry;
 USE henry;
 
-CREATE TABLE Carreras (idCarrera INT NOT NULL AUTO_INCREMENT, 
+CREATE TABLE Carrera (idCarrera INT NOT NULL AUTO_INCREMENT, 
 						nombre VARCHAR(50) NOT NULL, PRIMARY KEY(idCarrera));
                         
-CREATE TABLE Instructores (idInstructores INT NOT NULL AUTO_INCREMENT, 
+CREATE TABLE Instructor (idInstructor INT NOT NULL AUTO_INCREMENT, 
 							cedulaIdentidad VARCHAR(50), nombre VARCHAR(50), 
 							apellido VARCHAR(50), 
 							fechaNacimiento DATE, 
                             fechaIncorporacion DATE, 
-                            PRIMARY KEY(idInstructores));
+                            PRIMARY KEY(idInstructor));
                             
-CREATE TABLE Cohortes (idCohorte INT NOT NULL AUTO_INCREMENT, 
+CREATE TABLE Cohorte (idCohorte INT NOT NULL AUTO_INCREMENT, 
 						codigo VARCHAR(50), 
-						carrera INT, 
+						idCarrera INT, 
                         fechaInicio DATE, 
                         fechaFinalizacion DATE, 
-                        instructor INT, 
+                        idInstructor INT, 
 						PRIMARY KEY(idCohorte), 
-                        FOREIGN KEY(carrera) REFERENCES Carreras(idCarrera), 
-                        FOREIGN KEY(instructor) REFERENCES Instructores(idInstructores));
+                        FOREIGN KEY(idCarrera) REFERENCES Carrera(idCarrera), 
+                        FOREIGN KEY(idInstructor) REFERENCES Instructor(idInstructor));
                         
-CREATE TABLE Alumnos (idAlumnos INT NOT NULL AUTO_INCREMENT, 
+CREATE TABLE Alumno (idAlumno INT NOT NULL AUTO_INCREMENT, 
 						cedulaIdentidad VARCHAR(50), 
                         nombre VARCHAR(50), 
                         apellido VARCHAR(50), 
 						fechaNacimiento DATE, 	
-                        fechaIngreso DATE, cohorte INT, 
-                        PRIMARY KEY(idAlumnos), 
-                        FOREIGN KEY(cohorte) REFERENCES Cohortes(idCohorte));
+                        fechaIngreso DATE, idCohorte INT, 
+                        PRIMARY KEY(idAlumno), 
+                        FOREIGN KEY(idCohorte) REFERENCES Cohorte(idCohorte));
 
 
 
