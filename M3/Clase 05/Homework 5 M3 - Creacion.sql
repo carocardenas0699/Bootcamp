@@ -1,6 +1,6 @@
-DROP DATABASE empresa_tec;
-CREATE DATABASE empresa_tec;
-USE empresa_tec;
+DROP DATABASE empresa_tech;
+CREATE DATABASE empresa_tech;
+USE empresa_tech;
 
 CREATE TABLE Sucursales (IdSucursal INT NOT NULL, 
 						 Sucursal VARCHAR(255), 
@@ -17,8 +17,7 @@ CREATE TABLE Empleados (IdEmpleado INT NOT NULL,
                         Sucursal VARCHAR(255),
                         Sector VARCHAR(255),
                         Cargo VARCHAR(255),
-                        Salario INT,
-                        PRIMARY KEY(idEmpleado));
+                        Salario INT);
 
 CREATE TABLE Proveedores (IdProveedor INT NOT NULL,
 						  Nombre VARCHAR(255),
@@ -28,7 +27,7 @@ CREATE TABLE Proveedores (IdProveedor INT NOT NULL,
                           Pais VARCHAR(255),
                           Departamento VARCHAR(255),
                           PRIMARY KEY(idProveedor));
-                          
+
 CREATE TABLE Clientes (IdCliente INT NOT NULL,
 					   Provincia VARCHAR(255),
                        NombreCompleto VARCHAR(255),
@@ -38,6 +37,11 @@ CREATE TABLE Clientes (IdCliente INT NOT NULL,
                        Localidad VARCHAR(255),
                        Latitud VARCHAR(255),
                        Longitud VARCHAR(255),
+                       Fecha_Alta DATE,
+                       Usuario_Alta VARCHAR(255),
+                       Fecha_Ultima_Modificacion DATE,
+                       Usuario_Ultima_Modificacion VARCHAR(255),
+                       Marca_Baja VARCHAR(255),
                        PRIMARY KEY(IdCliente));
                        
 CREATE TABLE Productos (IdProducto INT NOT NULL,
