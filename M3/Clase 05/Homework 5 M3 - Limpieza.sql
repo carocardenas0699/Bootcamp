@@ -5,7 +5,13 @@ ALTER TABLE Clientes
 RENAME COLUMN Domicilio TO Direccion;
 
 ALTER TABLE Productos
-RENAME COLUMN Concepto TO Nombre;
+RENAME COLUMN Concepto TO Producto;
+
+ALTER TABLE TipoGasto
+RENAME COLUMN Descripcion TO Gasto;
+
+ALTER TABLE Calendario
+RENAME COLUMN Id TO IdFecha;
 
 -- Cambio de posicion de columnas
 ALTER TABLE Compras 
