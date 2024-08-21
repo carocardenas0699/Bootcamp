@@ -12,4 +12,6 @@ CREATE TABLE proveedores_copy AS
 	SELECT IdProveedor, Nombre, Direccion, Ciudad, Estado, Departamento
     FROM proveedores;
     
-    
+CREATE TABLE ventas_copy AS
+	SELECT IdVenta, Fecha, FechaEntrega, IdCanal, IdSucursal, IdEmpleado, IdProducto, Precio, Cantidad, Outlier
+	FROM ventas;   

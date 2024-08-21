@@ -1,4 +1,7 @@
 USE empresa_tech;
+DROP TABLE Provincias;
+DROP TABLE Localidades;
+DROP TABLE AuxLocalidades;
 
 CREATE TABLE Provincias (IdProvincia INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
                          Provincia VARCHAR(255));
@@ -14,9 +17,6 @@ CREATE TABLE AuxLocalidades (LocOriginal VARCHAR(255),
                              ProvOriginal VARCHAR(255),
                              ProvNorm VARCHAR(255),
                              IdProvincia INT);
-DROP TABLE Provincias;
-DROP TABLE Localidades;
-DROP TABLE AuxLocalidades;
 
 ALTER TABLE Proveedores 
 RENAME COLUMN Estado TO Provincia;
@@ -122,43 +122,25 @@ DROP COLUMN Provincia;
 -- Crear las columnas nuevas
 ALTER TABLE Clientes
 ADD COLUMN IdLocalidad INT AFTER Edad;
-ALTER TABLE Clientes
-ADD COLUMN IdProvincia INT AFTER IdLocalidad;
 
 ALTER TABLE Sucursales
 ADD COLUMN IdLocalidad INT AFTER Direccion;
-ALTER TABLE Sucursales
-ADD COLUMN IdProvincia INT AFTER IdLocalidad;
 
 ALTER TABLE Proveedores
 ADD COLUMN IdLocalidad INT AFTER Direccion;
-ALTER TABLE Proveedores
-ADD COLUMN IdProvincia INT AFTER IdLocalidad;
 
 -- Llenar los datos de ID
 UPDATE Clientes c
 JOIN auxlocalidades aux ON c.Localidad = aux.LocOriginal
 SET c.idLocalidad = aux.IdLocalidad;
 
-UPDATE Clientes c
-JOIN auxlocalidades aux ON c.Provincia = aux.ProvOriginal
-SET c.idProvincia = aux.IdProvincia;
-
 UPDATE Sucursales s
 JOIN auxlocalidades aux ON s.Localidad = aux.LocOriginal
 SET s.idLocalidad = aux.IdLocalidad;
 
-UPDATE Sucursales s
-JOIN auxlocalidades aux ON s.Provincia = aux.ProvOriginal
-SET s.idProvincia = aux.IdProvincia;
-
 UPDATE Proveedores p
 JOIN auxlocalidades aux ON p.Localidad = aux.LocOriginal
 SET p.idLocalidad = aux.IdLocalidad;
-
-UPDATE Proveedores p
-JOIN auxlocalidades aux ON p.Provincia = aux.ProvOriginal
-SET p.idProvincia = aux.IdProvincia;
 
 -- Borrar columnas de Provincia y Localidad
 ALTER TABLE clientes
