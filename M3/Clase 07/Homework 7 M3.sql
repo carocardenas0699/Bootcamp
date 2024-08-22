@@ -34,7 +34,9 @@ ALTER TABLE Sucursales
 ADD FOREIGN KEY (IdLocalidad) REFERENCES Localidades(IdLocalidad);
 
 ALTER TABLE Ventas
-ADD FOREIGN KEY (IdEmpleado) REFERENCES Empleados(IdEmpleado);
+ADD FOREIGN KEY (IdEmpleado) REFERENCES Empleados(IdEmpleado); -- ERROR
+ALTER TABLE Ventas
+ADD FOREIGN KEY (IdCliente) REFERENCES Clientes(IdCliente);
 
 -- Crear indices
 ALTER TABLE Ventas ADD INDEX(IdProducto);
@@ -77,3 +79,8 @@ CREATE TABLE FactVenta (IdVenta INT,
 						IdProducto INT,
 						Precio FLOAT,
 						Cantidad INT);
+
+INSERT INTO factVenta
+SELECT IdVenta, Fecha, FechaEntrega, IdCanal, IdCliente, IdEmpleado, IdProducto, Precio, Cantidad
+FROM ventas
+WHERE YEAR(Fecha) = 2020;

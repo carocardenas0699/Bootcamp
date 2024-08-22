@@ -45,7 +45,7 @@ UPDATE Ventas SET Precio = '0' WHERE Precio = '';
 ALTER TABLE Ventas MODIFY COLUMN Precio FLOAT;
 
 -- Imputar valores faltantes
-UPDATE Clientes SET Domicilio = 'Sin Dato' WHERE Domicilio = "" OR ISNULL(Domicilio);
+UPDATE Clientes SET Direccion = 'Sin Dato' WHERE Direccion = "" OR ISNULL(Direccion);
 UPDATE Clientes SET Localidad = 'Sin Dato' WHERE Localidad = "" OR ISNULL(Localidad);
 UPDATE Clientes SET NombreCompleto = 'Sin Dato' WHERE NombreCompleto = "" OR ISNULL(NombreCompleto);
 UPDATE Clientes SET Provincia = 'Sin Dato' WHERE Provincia = "" OR ISNULL(Provincia);
