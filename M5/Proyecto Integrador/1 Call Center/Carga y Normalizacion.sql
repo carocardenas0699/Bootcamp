@@ -61,11 +61,16 @@ UPDATE calls SET agente = 'NO_SERVER' WHERE agente = 'NO_SERVERAMA' OR agente = 
 CREATE TABLE deleted_calls LIKE calls;
 ALTER TABLE deleted_calls ADD COLUMN motivo VARCHAR(255);
 
-SELECT * FROM deleted_calls;
-
 #Registros que tienen todos los tiempos en 0
 SELECT * FROM calls
 WHERE vru_time = 0 AND q_time = 0 AND ser_time = 0; #5390 (1.21%)
 
 INSERT INTO deleted_calls SELECT *, 'Todos los tiempos en 0' FROM calls
 WHERE vru_time = 0 AND q_time = 0 AND ser_time = 0;
+
+#Borrar registros con todos los tiempos en 0
+DELETE FROM calls WHERE vru_time = 0 AND q_time = 0 AND ser_time = 0;
+
+#Se crea tabla para ingresar datos cambiados
+CREATE TABLE modified_calls LIKE calls;
+ALTER TABLE modified_calls ADD COLUMN motivo VARCHAR(255);
