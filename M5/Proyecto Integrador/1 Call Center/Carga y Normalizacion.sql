@@ -2,7 +2,7 @@ CREATE DATABASE call_center;
 USE call_center;
 
 DROP TABLE calls;
-CREATE TABLE calls(vru_line VARCHAR(10),
+CREATE TABLE calls2(vru_line VARCHAR(10),
                    call_id INT,
                    customer_id VARCHAR(50),
                    priority TINYINT,
@@ -22,7 +22,7 @@ CREATE TABLE calls(vru_line VARCHAR(10),
                    startdate INT);
                    
 LOAD DATA INFILE 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\Call_Center_1999.csv'
-INTO TABLE calls
+INTO TABLE calls2
 FIELDS TERMINATED BY ';'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES; 
@@ -56,6 +56,9 @@ UPDATE calls SET priority = 'Alta' WHERE NOT priority = 'Normal';
 SELECT agente, COUNT(*) FROM calls
 GROUP BY agente;
 UPDATE calls SET agente = 'NO_SERVER' WHERE agente = 'NO_SERVERAMA' OR agente = 'ANO_SERVERT';
+
+#Normalizar tipo TT
+UPDATE calls SET tipo = 'TT' WHERE tipo = ' TT';
 
 #Se crea tabla para ingresar los registros borrados
 CREATE TABLE deleted_calls LIKE calls;
